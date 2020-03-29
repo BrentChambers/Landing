@@ -2,41 +2,6 @@
 (function(){
   "use strict";
 
-  //Generate random number******************************************************
-  //min is inclusive, max is not. Reusable.
-  function randomNumber(min, max){
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
-  }
-  //****************************************************************************
-
-
-
-  //Generate background color***************************************************
-  function generateBackground(){
-    let arr = [];
-    for(let i = 0; i < 3; i++){
-      arr.push(randomNumber(141, 228));
-    }
-    return arr;
-  }
-
-  let colors = generateBackground();
-
-  let body = document.querySelector('body');
-  body.style.backgroundColor = `rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`;
-//*****************************************************************************
-
-
-
-  //Menu button
-  let menuButton = document.querySelector('.menu-button');
-  let menuScreen = document.querySelector('.menu');
-  menuButton.addEventListener('click', function(){
-    menuScreen.classList.toggle('displayFullScreen');
-  });
-
   let monthArr = [
     'January','February','March','April',
     'May','June','July','August',
@@ -47,6 +12,39 @@
     'Sunday', 'Monday', 'Tuesday','Wednesday',
     'Thursday', 'Friday', 'Saturday'
   ];
+
+  //Generate random number******************************************************
+  //Reusable.
+  function randomNumber(min, max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  //****************************************************************************
+
+
+
+  //Generate background color***************************************************
+(function(){
+  function generateBackground(){
+    let arr = [];
+    for(let i = 0; i < 3; i++){
+      arr.push(randomNumber(141, 228));
+    }
+    
+    return arr;
+  }
+
+  let colors = generateBackground();
+
+  let body = document.querySelector('body');
+  body.style.backgroundColor = `rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`;
+})();
+//*****************************************************************************
+
+
+
+
 
 
   function getTime(){
