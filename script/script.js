@@ -2,6 +2,10 @@
 (function(){
   "use strict";
 
+  let body = document.querySelector('body');
+  let timeDisplay = document.querySelector('#time');
+  let dateDisplay = document.querySelector('#date');
+
   let monthArr = [
     'January','February','March','April',
     'May','June','July','August',
@@ -25,32 +29,21 @@
 
 
   //Generate background color***************************************************
-(function(){
   function generateBackground(){
     let arr = [];
     for(let i = 0; i < 3; i++){
       arr.push(randomNumber(141, 228));
     }
-    
-    return arr;
+    body.style.backgroundColor = `rgb(${arr[0]}, ${arr[1]}, ${arr[2]})`;
   }
 
-  let colors = generateBackground();
 
-  let body = document.querySelector('body');
-  body.style.backgroundColor = `rgb(${colors[0]}, ${colors[1]}, ${colors[2]})`;
-})();
+
 //*****************************************************************************
 
 
 
-
-
-
   function getTime(){
-    let timeDisplay = document.querySelector('#time');
-    let dateDisplay = document.querySelector('#date');
-
     let d = new Date();
     let h = d.getHours();
     let m = d.getMinutes();
@@ -82,4 +75,7 @@
 
   getTime();
   setInterval(getTime, 1000);
+
+  generateBackground();
+  setInterval(generateBackground, 5300);
 })();
